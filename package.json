@@ -3,6 +3,10 @@
 	"version": "3.0.11",
 	"description": "Spine plugin for Phaser-CE",
 	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
 	"author": {
 		"name": "Kleber Silva",
 		"email": "kleber.swf@gmail.com",
