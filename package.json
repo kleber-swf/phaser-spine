@@ -1,43 +1,44 @@
 {
-  "name": "@azerion/phaser-spine",
-  "author": "Azerion",
-  "version": "3.0.10",
-  "description": "Spine plugin for Phaser.io!",
-  "contributors": [
-    {
-      "name": "Ale Bles",
-      "email": "a.bles@azerion.com"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:azerion/phaser-spine.git"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/azerion/phaser-spine/master/LICENSE"
-    }
-  ],
-  "bugs": [
-    {
-      "url": "https://github.com/azerion/phaser-spine/issues"
-    }
-  ],
-  "config": {
-    "name": "phaser-spine"
-  },
-  "devDependencies": {
-    "grunt": "1.0.x",
-    "grunt-banner": "^0.6.0",
-    "grunt-contrib-clean": "1.0.x",
-    "grunt-contrib-concat": "1.0.x",
-    "grunt-contrib-connect": "1.0.x",
-    "grunt-contrib-uglify": "2.0.x",
-    "grunt-contrib-watch": "1.0.x",
-    "grunt-ts": "^6.0.0-beta.3",
-    "phaser": "2.6.2",
-    "typescript": "2.1.x"
-  },
-  "typings": "./config/typings.json"
+	"name": "@kleber-swf/phaser-ce-spine-plugin",
+	"version": "0.0.0",
+	"description": "Spine plugin for Phaser-CE",
+	"license": "MIT",
+	"author": {
+		"name": "Kleber Silva",
+		"email": "kleber-swf@gmail.com",
+		"url": "https://klebersilva.dev"
+	},
+	"contributors": [
+		{
+			"name": "Azerion"
+		},
+		{
+			"name": "Ale Bles",
+			"email": "a.bles@azerion.com"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:kleber-swf/phaser-spine.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kleber-swf/phaser-spine/issues"
+	},
+	"config": {
+		"name": "phaser-ce-spine-plugin"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.30.6",
+		"@typescript-eslint/parser": "^5.30.6",
+		"eslint": "^8.19.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-unused-imports": "^2.0.0",
+		"phaser-ce": "^2.19.2",
+		"rollup": "^2.76.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"tslib": "^2.4.0",
+		"typescript": "^4.7.4"
+	},
+	"typings": "./config/typings.json"
 }
