@@ -8,7 +8,9 @@ module.exports = function (grunt) {
         ' * <%= pkg.config.name %> - version <%= pkg.version %> \n' +
         ' * <%= pkg.description %>\n' +
         ' *\n' +
-        ' * <%= pkg.author %>\n' +
+        ' * <%= pkg.author.name %>\n' +
+        ' * <%= pkg.author.url %>\n' +
+        ' *\n' +
         ' * Build at <%= grunt.template.today("dd-mm-yyyy") %>\n' +
         ' * Released under MIT License \n' +
         ' */\n',
