@@ -5,7 +5,7 @@
  * Kleber Silva
  * https://klebersilva.dev
  *
- * Build at 27-09-2022
+ * Build at 06-06-2023
  * Released under MIT License 
  */
 
@@ -2897,7 +2897,6 @@ var PhaserSpine;
                 var cacheData = {
                     atlas: atlasKey,
                     basePath: (url.substring(0, url.lastIndexOf('/')) === '') ? '.' : url.substring(0, url.lastIndexOf('/')),
-                    variants: undefined
                 };
                 if (undefined === scalingVariants) {
                     scalingVariants = [''];
@@ -3019,7 +3018,9 @@ var PhaserSpine;
                 return (this.updateTransform === PhaserSpine.Spine.prototype.autoUpdateTransform);
             },
             set: function (value) {
-                this.updateTransform = value ? PhaserSpine.Spine.prototype.autoUpdateTransform : PIXI.DisplayObjectContainer.prototype.updateTransform;
+                this.updateTransform = value
+                    ? PhaserSpine.Spine.prototype.autoUpdateTransform
+                    : PIXI.DisplayObjectContainer.prototype.updateTransform;
             },
             enumerable: true,
             configurable: true
@@ -3028,10 +3029,7 @@ var PhaserSpine;
         ;
         Spine.prototype.getScaleFromVariant = function (variant) {
             var scale = PhaserSpine.SpinePlugin.RESOLUTION_REGEXP.exec(variant);
-            if (scale) {
-                return parseFloat(scale[1]);
-            }
-            return 1;
+            return scale ? parseFloat(scale[1]) : 1;
         };
         Spine.prototype.setTint = function (tint) {
             this.globalTint = tint;
@@ -3043,7 +3041,7 @@ var PhaserSpine;
             }
         };
         Spine.prototype.update = function (dt) {
-            if (dt === undefined) {
+            if (dt === undefined || this.game.paused) {
                 return;
             }
             this.state.update(dt);
@@ -3239,7 +3237,7 @@ var PhaserSpine;
             }
             if (skinNames.length === 0) {
                 console.warn('Unable to combine skins when no skins are passed...');
-                return;
+                return null;
             }
             var newSkin = new spine.Skin(newSkinName);
             for (var i = 0; i < skinNames.length; i++) {
@@ -3247,7 +3245,7 @@ var PhaserSpine;
                 var skin = this.skeleton.data.findSkin(skinName);
                 if (!skin) {
                     console.warn("Skin not found: " + skinName);
-                    return;
+                    return null;
                 }
                 for (var key in skin.attachments) {
                     var slotKeyPair = key.split(':');
@@ -3256,7 +3254,7 @@ var PhaserSpine;
                     var attachment = skin.attachments[key];
                     if (undefined === slotIndex || undefined === attachmentName) {
                         console.warn('something went wrong with reading the attachments index and/or name');
-                        return;
+                        return null;
                     }
                     if (newSkin.getAttachment(slotIndex, attachmentName) !== undefined) {
                         console.warn('Found double attachment for: ' + skinName + '. Skipping');
