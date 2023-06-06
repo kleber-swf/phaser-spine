@@ -1,6 +1,6 @@
 {
 	"name": "@kleber-swf/phaser-spine",
-	"version": "3.0.11",
+	"version": "3.0.12",
 	"description": "Spine plugin for Phaser-CE",
 	"license": "MIT",
 	"private": false,
@@ -43,7 +43,7 @@
 		"grunt-contrib-uglify": "2.0.x",
 		"grunt-contrib-watch": "1.0.x",
 		"grunt-ts": "^6.0.0-beta.3",
-		"phaser": "2.6.2",
+		"phaser-ce": "^2.20.0",
 		"typescript": "2.1.x"
 	}
 }

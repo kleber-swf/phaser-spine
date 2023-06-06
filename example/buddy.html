@@ -1,58 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Phaser Spine Example</title>
+	<head>
+		<title>Phaser Spine Example</title>
 
-    <script src="../node_modules/phaser/build/phaser.js"></script>
-    <script src="../build/phaser-spine.js"></script>
+		<script src="../node_modules/phaser-ce/build/phaser.js"></script>
+		<script src="../build/phaser-spine.js"></script>
 
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-<script>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			var buddy, game;
 
-    var buddy, game;
+			game = new Phaser.Game(800, 600, Phaser.AUTO, '', { init: init, preload: preload, create: create });
 
-    game = new Phaser.Game(800, 600, Phaser.AUTO, '', {init: init, preload: preload, create: create});
+			function init() {
+				this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			}
 
-    function init() {
-        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    }
+			function preload() {
+				game.plugins.add(PhaserSpine.SpinePlugin);
+				// game.stage.disableVisibilityChange = true;
 
-    function preload() {
-        game.plugins.add(PhaserSpine.SpinePlugin);
-        game.stage.disableVisibilityChange = true;
+				game.load.spine('buddy', 'assets/buddy_skeleton.json');
+				game.load.image('button1', 'assets/btn_01.png');
+				game.load.image('button2', 'assets/btn_02.png');
+			}
 
-        game.load.spine('buddy', "assets/buddy_skeleton.json");
-        game.load.image('button1', "assets/btn_01.png");
-        game.load.image('button2', "assets/btn_02.png");
-    }
+			function create() {
+				//create the spine object
+				buddy = game.add.spine(400, 300, 'buddy');
 
-    function create() {
+				// play animation
+				buddy.setAnimationByName(0, 'idle', true);
+				var newSkin = buddy.createCombinedSkin('outfit02', 'vest', 'mask');
 
-        //create the spine object
-        buddy = game.add.spine(400, 300, "buddy");
+				var button1 = this.game.add.button(20, 20, 'button1', function () {
+					buddy.setSkinByName('outfit01');
+					buddy.setToSetupPose();
+				});
 
-        // play animation
-        buddy.setAnimationByName(0, "idle", true);
-        var newSkin = buddy.createCombinedSkin('outfit02', 'vest', 'mask');
-
-        var button1 = this.game.add.button(20, 20, 'button1', function () {
-            buddy.setSkinByName('outfit01');
-            buddy.setToSetupPose();
-        });
-
-        var button1 = this.game.add.button(20, 130, 'button2', function () {
-            buddy.setSkinByName('outfit02');
-            buddy.setToSetupPose();
-        });
-    }
-</script>
-
-</body>
+				var button1 = this.game.add.button(20, 130, 'button2', function () {
+					buddy.setSkinByName('outfit02');
+					buddy.setToSetupPose();
+				});
+			}
+		</script>
+	</body>
 </html>
