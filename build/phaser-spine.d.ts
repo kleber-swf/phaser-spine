@@ -62,13 +62,13 @@ declare module PhaserSpine {
         createSprite(slot: any, attachment: any): Phaser.Sprite;
         createMesh(slot: any, attachment: any): Phaser.Rope;
         setMixByName(fromName: string, toName: string, duration: number): void;
-        setAnimationByName(trackIndex: number, animationName: string, loop?: boolean): spine.TrackEntry;
-        addAnimationByName(trackIndex: number, animationName: string, loop?: boolean, delay?: number): spine.TrackEntry;
+        setAnimationByName(trackIndex: number, animationName: string, loop?: boolean): spine.TrackEntry | null;
+        addAnimationByName(trackIndex: number, animationName: string, loop?: boolean, delay?: number): spine.TrackEntry | null;
         getCurrentAnimationForTrack(trackIndex: number): string;
         setSkinByName(skinName: string): void;
         setSkin(skin: spine.Skin): void;
         setToSetupPose(): void;
-        createCombinedSkin(newSkinName: string, ...skinNames: string[]): spine.Skin;
+        createCombinedSkin(newSkinName: string, ...skinNames: string[]): spine.Skin | null;
     }
 }
 declare module PhaserSpine {
